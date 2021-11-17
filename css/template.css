@@ -1,6 +1,8 @@
-<<<<<<< HEAD
 body {
   padding-top: 5rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 .starter-template {
   padding: 3rem 1.5rem;
@@ -9,21 +11,6 @@ body {
 
 .jumbotron {
   background-color: #a8a8a8
-}
-
-body {
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-
-}
-=======
-body {
-  padding-top: 5rem;
-}
-.starter-template {
-  padding: 3rem 1.5rem;
-  text-align: center;
 }
 
 section {
@@ -44,4 +31,3 @@ button {
   display: inline-block;
   font-size: 14px;
 }
->>>>>>> 58201314329d20897871db1ca9f453bb6d619cb1
