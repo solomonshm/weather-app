@@ -1,12 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
     <title>HAIRWeather</title>
 
 
@@ -15,11 +9,30 @@
 
     <!-- Custom styles for this template -->
     <link href="css/template.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.1/dist/L.Control.Locate.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.1/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <script src="js/env.js"></script>
+    <style>
+      /* body, html {
+        height:100%;
+        width:100%;
+      } */
+    </style>
   </head>
 
   <body>
-
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="height:10%">
       <a class="navbar-brand" href="#">HAIRWeather</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -39,21 +52,65 @@
       </div>
     </nav>
 
-    <main role="main" class="container">
+      <div>
+        <div id="mapid" style="width: 100%; height: 920px"></div>
 
-      <div class="starter-template">
-        <h1>Map page</h1>
-        <p class="lead">Indigo's nonsense</p>
       </div>
+ 
 
-    </main><!-- /.container -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <!-- <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script> -->
+
+      <script>
+
+          var favoritemovie;
+          sessionStorage.setItem("favoriteMovie", favoritemovie);
+
+          var mymap = L.map('mapid').setView([0,0], 3);
+  
+          document.addEventListener('DOMContentLoaded', function() {
+                          // functions that happen on load
+                          loadLeafletMap();
+                          getLocation();
+                      }, false);
+  
+          function loadLeafletMap () {
+  
+              L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                  maxZoom: 18,
+                  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                  id: 'mapbox/streets-v11',
+                  tileSize: 512,
+                  zoomOffset: -1,
+                  center: [0,0],
+                  zoom:3
+              }).addTo(mymap);
+          }
+      
+
+              var results_string = "<p><b>You clicked on this location!</b><br/>Would you like to see the weather here?</p><button id="+"'mapbtn'"+" type="+"'button'"+" class="+"'btn btn-primary btn-sm '"+"onclick="+"location.href='results.html';favoritemovie=12;"+">Go!</button>"
+              // 
+
+              mymap.on('click', function(e) {        
+                  var popLocation= e.latlng;
+                  lat = popLocation.lat;
+                  lng = popLocation.lng;
+                  var popup = L.popup()
+                  .setLatLng(popLocation)
+                  .setContent(results_string)
+                  .openOn(mymap);        
+              });
+
+              function getLocation () {
+                navigator.geolocation.getCurrentPosition(getPosition);
+              }
+
+              function getPosition (position) {
+                L.marker([position.coords.latitude, position.coords.longitude]).bindPopup('<p>This is your location</p>').addTo(mymap);
+              }
+            
+      </script>
   </body>
 </html>
