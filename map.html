@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.1/dist/L.Control.Locate.min.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.1/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/env.js"></script>
     <style>
       /* body, html {
@@ -58,10 +59,6 @@
       </div>
  
 
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-
       <script>
 
           var favoritemovie;
@@ -88,20 +85,46 @@
                   zoom:3
               }).addTo(mymap);
           }
-      
 
-              var results_string = "<p><b>You clicked on this location!</b><br/>Would you like to see the weather here?</p><button id="+"'mapbtn'"+" type="+"'button'"+" class="+"'btn btn-primary btn-sm '"+"onclick="+"location.href='results.html';favoritemovie=12;"+">Go!</button>"
-              // 
+              var lat;
+              var lng;
+
+      
 
               mymap.on('click', function(e) {        
                   var popLocation= e.latlng;
                   lat = popLocation.lat;
                   lng = popLocation.lng;
+
+                  //var results_string = "<p><b>You clicked on this location!</b><br/>Would you like to see the weather here?</p><button id="+"'mapbtn'"+" type="+"'button'"+" class="+"'btn btn-primary btn-sm '"+"onclick="+"location.href='results.html?lat="+lat+"&lng="+lng+"';favoritemovie=12;"+">Go!</button>"
+                  var results_string = "<p><b>You clicked on this location!</b><br/>Would you like to see the weather here?</p><button id="+"'mapbtn'"+" type="+"'button'"+" class="+"'btn btn-primary btn-sm '"+"onclick="+"getCity("+lat+","+lng+");"+">Go!</button>"
+
                   var popup = L.popup()
                   .setLatLng(popLocation)
                   .setContent(results_string)
                   .openOn(mymap);        
               });
+
+              function getCity(lat, lng) {
+                var key = 'AIzaSyAYGb_StXeIrAA-juKWdqC0oKpUsBZfWus';
+                var reverse_geocode_url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat+','+lng+'&key=' +key;
+
+                $.ajax({
+                  url:reverse_geocode_url,
+                  type:"GET",
+                  crossDomain: true,
+                  success: function (res) {
+                    var city = res.results[0].address_components[1].long_name;
+                    var country = res.results[0].address_components[3].long_name;
+
+                    var test = "http://localhost:4443/results.html?city="+city+"&country=" +country;
+
+                    window.location.href = test;
+                  }
+                })
+
+
+              }
 
               function getLocation () {
                 navigator.geolocation.getCurrentPosition(getPosition);
