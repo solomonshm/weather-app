@@ -58,7 +58,24 @@
     <script src="../../dist/js/bootstrap.min.js"></script> -->
   </body>
   <script>
-    var favoritemovie = sessionStorage.getItem("favoriteMovie");
-    console.log(favoritemovie);
+    document.addEventListener('DOMContentLoaded', function() {
+                              // functions that happen on load
+                              getParamsFromUrl();
+                          }, false);
+
+
+    function getParamsFromUrl () {
+      const queryString = window.location.search;
+      console.log(queryString);
+
+      const urlParams = new URLSearchParams(queryString);
+
+      var city = urlParams.get('city');
+      var country = urlParams.get('country');
+
+      console.log(city);
+      console.log(country);
+    }
+
   </script>
 </html>
