@@ -72,4 +72,28 @@
 
 
   </body>
+<<<<<<< HEAD
+=======
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+                              // functions that happen on load
+                              getParamsFromUrl();
+                          }, false);
+
+
+    function getParamsFromUrl () {
+      const queryString = window.location.search;
+      console.log(queryString);
+
+      const urlParams = new URLSearchParams(queryString);
+
+      var city = urlParams.get('city');
+      var country = urlParams.get('country');
+
+      console.log(city);
+      console.log(country);
+    }
+
+  </script>
+>>>>>>> f486a325584dc3c3e91285b7903e43c649eb2187
 </html>
