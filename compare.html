@@ -39,13 +39,98 @@
       </div>
     </nav>
 
+    <article>
+
+      <!--<section>
+          <h4>First Location</h4>
+          <input placeholder="City" id='txtCity' /><br />
+          <input placeholder="Country" id='txtCountry' /><br />
+      </section>> -->
+
+          <!--<aside>
+            <h4>Second Location</h4>
+            <input placeholder="City" id='txtCity2' /><br />
+            <input placeholder="Country" id='txtCountry2' /><br />
+
+          </aside> -->
+          <!-- <button id='btnGo'>Go</button>
+
+      
+    </article> -->
+
+    <!-- <article class='invisible' id='weatherOutput'>
+
+      <h4 id='where'></h4>
+      <ul>
+          <li id='txtDesc'></li>
+          <li id='txtTemp'></li> includes actual tempertaure and feels like temperature
+          <li id='txtWind'></li>
+          
+      </ul>
+    </article> -->
+
+    
+
     <main role="main" class="container">
 
       <div class="starter-template">
-        <h1>Comparison page</h1>
-        <p class="lead">Annie's nonsense</p>
+        <h1>Compare Weather in Two Locations</h1>
+        <p class="lead"></p>
+        <button id='btnGo'>Compare</button>
+
       </div>
 
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <section>
+              <h4>First Location</h4>
+              <input placeholder="City" id='txtCity' /><br />
+              <input placeholder="Country" id='txtCountry' /><br />
+
+              <hr/>
+
+              <article class='invisible' id='weatherOutput'>
+
+                <h4 id='where'></h4>
+                <ul>
+                    <li id='txtDesc'></li>
+                    <li id='txtTemp'></li> <!-- includes actual tempertaure and feels like temperature-->
+                    <li id='txtWind'></li>
+                                        
+                </ul>
+              </article>
+
+          </section>
+          </div>
+          
+          <div class="col">
+            <h4>Second Location</h4>
+            <input placeholder="City" id='txtCity2' /><br />
+            <input placeholder="Country" id='txtCountry2' /><br />
+
+            <hr/>
+            
+
+            <article class='invisible' id='weatherOutput2'>
+
+              <h4 id='where2'></h4>
+              <ul>
+                  <li id='txtDesc2'></li>
+                  <li id='txtTemp2'></li> <!-- includes actual tempertaure and feels like temperature-->
+                  <li id='txtWind2'></li>
+                  
+              </ul>
+            </article>
+
+          </div>
+
+        </div>
+        
+
+      </div>
+      
+   
     </main><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
@@ -55,5 +140,8 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <!-- <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script> -->
+    <script src="compare_script.js"></script>  
+    <script src="retrieve_secondweather.js"></script>
   </body>
+  
 </html>
