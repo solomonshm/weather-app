@@ -1,8 +1,8 @@
 // event handler
-const retrieveWeather2 = () => {
+const retrieveWeather = () => {
     // grab the user values for city and country
-    let city = document.getElementById('txtCity2').value
-    let country = document.getElementById('txtCountry2').value
+    let city = document.getElementById('txtCity').value
+    let country = document.getElementById('txtCountry').value
     // make a call to the weather API service
     weatherURL = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&APPID=48f2d5e18b0d2bc50519b58cce6409f1`
     
@@ -14,8 +14,8 @@ const retrieveWeather2 = () => {
             if (data.cod == '400') {
                 // oh dear
                 msg = 'Unexpected weather in bagging area, please try again'
-                document.getElementById('location').innerHTML = msg
-                console.log(data)
+                document.getElementById('where').innerHTML = msg
+                //console.log(data)
             } else {
                 // all good - lets enjoy the weather data
                 let location = `${city}, ${country}`
@@ -26,20 +26,20 @@ const retrieveWeather2 = () => {
                 let tempMsg = `The temperature is  ${temp}&deg; and feels like ${temp_feels}&deg;`
                 let windMsg = `The wind speed is ${wind.speed} from ${wind.deg}&deg;`
 
-                document.getElementById('where2').innerHTML = location
-                document.getElementById('txtDesc2').innerHTML = desc
-                document.getElementById('txtTemp2').innerHTML = tempMsg
-                document.getElementById('txtWind2').innerHTML = windMsg
-                document.getElementById('icon2').src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+                document.getElementById('where').innerHTML = location
+                document.getElementById('txtDesc').innerHTML = desc
+                document.getElementById('txtTemp').innerHTML = tempMsg
+                document.getElementById('txtWind').innerHTML = windMsg
+                document.getElementById('wibble').src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
 
                 
                 //make the HTML weather node visible
-                document.getElementById('weatherOutput2').setAttribute('class', 'visible')
+                document.getElementById('weatherOutput').setAttribute('class', 'visible')
             }
         }).catch((error) => { // this catches server errors such as timeout
             console.error('Error:', error);
         })
 }
-document.querySelector('#btnGo2').addEventListener('click', retrieveWeather2)
+document.querySelector('#btnGo').addEventListener('click', retrieveWeather)
 
 
