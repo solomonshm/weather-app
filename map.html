@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.1/dist/L.Control.Locate.min.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.1/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <script src="js/env.js"></script>
     <style>
       /* body, html {
         height:100%;
@@ -62,6 +63,10 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
       <script>
+
+          var favoritemovie;
+          sessionStorage.setItem("favoriteMovie", favoritemovie);
+
           var mymap = L.map('mapid').setView([0,0], 3);
   
           document.addEventListener('DOMContentLoaded', function() {
@@ -85,7 +90,8 @@
           }
       
 
-              var results_string = "<p><b>You clicked on this location!</b><br/>Would you like to see the weather here?</p><button id="+"'mapbtn'"+" type="+"'button'"+" class="+"'btn btn-primary btn-sm '"+"onclick="+"location.href='results.html';"+">Go!</button>"
+              var results_string = "<p><b>You clicked on this location!</b><br/>Would you like to see the weather here?</p><button id="+"'mapbtn'"+" type="+"'button'"+" class="+"'btn btn-primary btn-sm '"+"onclick="+"location.href='results.html';favoritemovie=12;"+">Go!</button>"
+              // 
 
               mymap.on('click', function(e) {        
                   var popLocation= e.latlng;
