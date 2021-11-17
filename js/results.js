@@ -26,5 +26,36 @@ function loadPage(data) {
     document.body.style.backgroundImage = `url(${getImageUrl(data.weather[0].main)})`
 }
 
-data = {"coord":{"lon":23.3242,"lat":42.6975},"weather":[{"id":804,"main":"Drizzle","description":"overcast clouds","icon":"04n"}],"base":"stations","main":{"temp":280.69,"feels_like":278.07,"temp_min":279.84,"temp_max":281.27,"pressure":1026,"humidity":75},"visibility":10000,"wind":{"speed":4.12,"deg":110},"clouds":{"all":90},"dt":1637077549,"sys":{"type":2,"id":2034562,"country":"BG","sunrise":1637039981,"sunset":1637075012},"timezone":7200,"id":727011,"name":"Sofia","cod":200}
-loadPage(data)
+document.addEventListener('DOMContentLoaded', function() {
+    // functions that happen on load
+    getParamsFromUrl();
+}, false);
+
+
+
+function getParamsFromUrl () {
+    const queryString = window.location.search;
+    console.log(queryString);
+
+    const urlParams = new URLSearchParams(queryString);
+
+    var city = urlParams.get('city');
+    var country = urlParams.get('country');
+
+    getData(city, country);
+}
+
+
+function getData(city, country) {
+    var weatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=48f2d5e18b0d2bc50519b58cce6409f1`
+
+    $.ajax({
+    url: weatherUrl,
+    crossDomain: true,
+    type:"GET",
+    success: function (res){
+    loadPage(res);
+    }
+})
+
+}
