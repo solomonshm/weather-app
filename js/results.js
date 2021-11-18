@@ -10,11 +10,11 @@ function getImageUrl(weather) {
         return "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFpbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
     } else if (weather == "Snow") {
         return "https://images.unsplash.com/photo-1491002052546-bf38f186af56?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vd2luZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
-    } else if (weather == "Atmosphere" || weather == "Haze") {
-        return "https://wallpaper.dog/large/20394727.jpg"
     } else if (weather == "Clear") {
         return "https://wallpaperaccess.com/full/3364029.jpg"
-    }
+    } else {
+        return "https://wallpaper.dog/large/20394727.jpg"
+    } 
 
 }
 
