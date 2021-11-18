@@ -16,6 +16,11 @@
     <!-- Custom styles for this template -->
     <link href="css/template.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    <style>
+       
+    </style>
   </head>
 
   <body>
@@ -59,15 +64,19 @@
           
           </div>
 
-          <div>
-            <br><br>
-            <h1>The Brownhall Zone</h1>
-            <br><br>
-          </div>
+          
+          <!-- <div id="mapid2" style="width:100%; height: 200px;"></div> -->
+         
       
       </div>
       
-    </main><!-- /.container -->
+     
+      
+
+      
+    </main>
+
+    <!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -80,7 +89,43 @@
 
   </body>
   <script>  
-  </script>
+      var mymap = L.map('mapid2').setView([0,0], 3);
+
+     
+
+        document.addEventListener('DOMContentLoaded', function() {
+                            // functions that happen on load
+                            loadLeafletMap();
+    
+                        }, false);
   
+          function loadLeafletMap () {
+  
+              L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                  maxZoom: 18,
+                  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                  id: 'mapbox/streets-v11',
+                  tileSize: 512,
+                  zoomOffset: -1,
+                  center: [0,0],
+                  zoom:3
+              }).addTo(mymap);
+          }
+
+          setInterval(function () {
+            mymap.invalidateSize();
+          }, 100);
+
+      const queryString = window.location.search;
+      console.log(queryString);
+
+      const urlParams = new URLSearchParams(queryString);
+
+      var lat = urlParams.get('lat');
+      var lng = urlParams.get('lng');
+
+      L.marker([lat, lng]).addTo(mymap);
+  </script>
   </script>
 </html>

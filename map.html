@@ -117,7 +117,7 @@
                     var city = res.results[0].address_components[1].long_name;
                     var country = res.results[0].address_components[3].long_name;
 
-                    var temp = "http://localhost:4443/results.html?city="+city+"&country=" +country;
+                    var temp = "http://localhost:4443/results.html?city="+city+"&country=" +country+"&lat="+lat+"&lng="+lng;
 
                     window.location.href = temp;
                   }
