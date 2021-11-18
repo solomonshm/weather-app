@@ -1,3 +1,24 @@
+function getImageUrl(weather) {
+
+    if (weather == "Clouds") {
+        return "https://www.rmweb.co.uk/community/uploads/monthly_03_2015/post-3717-0-28910200-1427235972.jpg"
+    } else if (weather == "Thunderstorm") {
+        return "https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
+    } else if (weather == "Drizzle") {
+        return "https://images.unsplash.com/photo-1541919329513-35f7af297129?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZHJpenpsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+    } else if (weather == "Rain") {
+        return "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFpbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+    } else if (weather == "Snow") {
+        return "https://images.unsplash.com/photo-1491002052546-bf38f186af56?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vd2luZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+    } else if (weather == "Atmosphere") {
+        return "https://wallpaper.dog/large/20394727.jpg"
+    } else if (weather == "Clear") {
+        return "https://wallpaperaccess.com/full/3364029.jpg"
+    }
+
+}
+
+
 // event handler
 const retrieveWeather2 = () => {
     // grab the user values for city and country
@@ -31,6 +52,8 @@ const retrieveWeather2 = () => {
                 document.getElementById('txtTemp2').innerHTML = tempMsg
                 document.getElementById('txtWind2').innerHTML = windMsg
                 document.getElementById('icon2').src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+                document.body.style.backgroundImage = `url(${getImageUrl(data.weather[0].main)})`
+                document.body.style.backgroundPosition = "top right";
 
                 
                 //make the HTML weather node visible
@@ -40,6 +63,6 @@ const retrieveWeather2 = () => {
             console.error('Error:', error);
         })
 }
-document.querySelector('#btnGo2').addEventListener('click', retrieveWeather2)
+document.querySelector('#btnGo').addEventListener('click', retrieveWeather2)
 
 
