@@ -115,9 +115,10 @@
                   type:"GET",
                   crossDomain: true,
                   success: function (res) {
-                    var city = res.results[0].address_components[1].long_name;
-                    var country = res.results[0].address_components[3].long_name;
-
+                    var city = res.results[0].address_components[2].long_name;
+                    var country = res.results[0].address_components[5].long_name;
+                    
+                    console.log(res)
                     var temp = "http://localhost:4443/results.html?city="+city+"&country=" +country;
 
                     window.location.href = temp;
