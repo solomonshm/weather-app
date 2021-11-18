@@ -22,11 +22,12 @@
     .visible {display:block}
     #where {text-transform: capitalize}
 
-    .left {margin-left: 600pt; width:250pt;  position: absolute;top:80px;}
-    .right{margin-left: 10pt; width:250pt; position:absolute;top:200px}
+    .left {margin-left: 600pt; width:200pt;  position: absolute;top:120px; height: 250pt;}
+    .right{margin-left: 10pt; width:250pt; position:absolute;top:180px}
 
-    .MapPlacement{position:absolute;top:510px;right:200px}
-    .ComparePlacement{position:absolute;top:395px;left:185px}
+    .MapPlacement{position:absolute;top:450px;right:200px}
+    .ComparePlacement{position:absolute;top:375px;left:185px}
+
 
   </style>
 
@@ -54,13 +55,14 @@
     
     <main role="main" class="container">
   
-      
+      <div class = jumbotron>
       <div class="starter-template">
         <h1>Weather Report</h1>
         <p class="lead">Enter a location below</p>
         <input placeholder="City" id='txtCity'/> <br/>
         <input placeholder="Country" id='txtCountry'/> <br/>
         <button class="btn btn-secondary"  id=ResultsBtn onclick="gotoResults();">Go to results</button>
+      </div>
       </div>
    
 <!-- href="results.html" -->
