@@ -13,6 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Outfit" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/template.css" rel="stylesheet">
@@ -57,11 +58,11 @@
   
       <!-- <div class='jumbotron'> -->
       <div class="starter-template">
-        <div class ='jumbotron'>
+        <div class ='jumbotron shadow'>
         <h1>Weather Report</h1>
-        <p class="lead">Enter a location below</p>
-        <input placeholder="City" id='txtCity'/> <br/>
-        <input placeholder="Country" id='txtCountry'/> <br/>
+        <p class="lead">View the weather for:</p>
+        <input placeholder="City" id='txtCity'/> <br/> 
+        <input placeholder="Country" id='txtCountry'/> <br/><br/>
         <button class="btn btn-secondary"  id=ResultsBtn onclick="gotoResults();">Go to results</button>
       </div>
       </div>
@@ -71,9 +72,9 @@
 
 
     <input class='left' type='image' name="globe" src="globe.gif" alt='map' onclick="location.href = 'map.html';"> 
-    <span class='MapPlacement'>Map View &uarr;</span>
+    <!-- <span class='MapPlacement'>Map View &uarr;</span> -->
     <input class='right' type='image' name="comparison" src="comparison.png" alt='compare' onclick="location.href = 'compare.html';">
-    <span class='ComparePlacement'>Compare two places &uarr;</span>
+    <!-- <span class='ComparePlacement'>Compare two places &uarr;</span> -->
 
 
     <article class='invisible' id='WeatherResults'>
@@ -141,70 +142,32 @@
           type:"GET",
           crossDomain: true,
           success: function (res) {
-            var city = res.results[0].address_components[1].long_name;
-            var country = res.results[0].address_components[3].long_name;
+            var city = res.results[0].address_components[2].long_name;
+            var country = res.results[0].address_components[5].long_name;
 
-            getVariables (city, country)
-            alert("You are in " + city)
+            console.log(res);
+            document.getElementById("txtCity").value = city;
+            document.getElementById("txtCountry").value = country;
+            // alert("You are in " + city)
           }
         })
 
-        function getVariables (_city, _country){
-          city = _city
-          country = _country 
-         // temp = "http://localhost:4443/results.html?city="+city+"&country=" +country;
-
-        //            window.location.href = temp;
-
-        }
-
-
+      
       }
 
-      //         const getWeather = () => {
-      //             weatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=48f2d5e18b0d2bc50519b58cce6409f1`
-      //             fetch(weatherUrl)
-      //                 .then(response => response.json())
-      //                 .then(data =>{
-      //                     console.log(data);
-      //                     weHaveData = true
-      //                     if (data.cod == '400'){
-      //                         msg = 'Error, please try again'
-      //                         document.getElementById('location').innerHTML = msg
-      //                         console.log(data)
-      //                     } else {
-      //                 //         let location = `${city}, ${country}`
-      //                 //         let desc = data.weather[0].description
-      //                 //         let temp = data.main.temp
-      //                 //         let feels = data.main.feels_like
-      //                 //         let windS = data.wind.speed
-      //                 //         let windD = data.wind.deg
-      
+      //   function getVariables (_city, _country){
+      //     city = _city
+      //     country = _country 
+      //    // temp = "http://localhost:4443/results.html?city="+city+"&country=" +country;
 
-      //                 // let tempMsg = `The temperature is ${(Math.round((temp - 273) * 10) / 10)}&deg; and feels like ${(Math.round((feels - 273) * 10) / 10)}&deg;`
-      //                 // let windMsg = `The wind speed is ${windS} km/h & the wind temp is ${(Math.round((windD - 273) * 10) / 10)}&deg;`
-            
+      //   //            window.location.href = temp;
 
-      //                 // //NEED TO MAKE SURE THAT A LOCATION HEADER IS ADDED TO RESULTS PAGE
-      //                 // document.getElementById('where').innerHTML = location
-      //                 // document.getElementById('Desc').innerHTML = desc
-      //                 // document.getElementById('Temp').innerHTML = tempMsg
-      //                 // document.getElementById('Wind').innerHTML = windMsg
+      //   }
 
-      //                 // document.getElementById('WeatherResults').setAttribute('class','visible')
-      //                 loadPage(data)
-      //                 console.log(data);
-      //       }
-            
-      //   }).catch((error) => {
-      //       console.error('Error:', error);
-      //   })
+
       // }
-      
-      //document.querySelector('#ResultsBtn').addEventListener('click', getWeather) 
 
-
-      
+    
     </script>
     
     <!-- Bootstrap core JavaScript
