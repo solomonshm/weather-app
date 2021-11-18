@@ -49,57 +49,63 @@
         <h1>Compare Weather in Two Locations</h1>
         <p class="lead"></p>
         <button id='btnGo'>Compare</button>
-        <button id='btnGo2'>Compare</button>
-
+        
       </div>
 
       <div class="container">
         <div class="row">
           <div class="col">
-            <section>
-              <h4>First Location</h4>
-              <input placeholder="City" id='txtCity' /><br />
-              <input placeholder="Country" id='txtCountry' /><br />
+              <section>
+                <h4>First Location</h4>
+                <input placeholder="City" id='txtCity' /><br />
+                <input placeholder="Country" id='txtCountry' /><br />
 
-              <hr/>
+                <hr/>
 
-              <article class='invisible' id='weatherOutput'>
-
-                <h4 id='where'></h4>
+                  <article class='invisible' id='weatherOutput'>
+                  <div class="jumbotron">
+                    <h4 id='where'></h4>
+                    
+                    <ul>
+                        <li id='txtDesc'></li>
+                        <li id='txtTemp'></li> <!-- includes actual tempertaure and feels like temperature-->
+                        <li id='txtWind'></li>
+                                            
+                    </ul>
+                    <img id='wibble' src="..."></img>
+                  </div>
+                  </article>
                 
-                <ul>
-                    <li id='txtDesc'></li>
-                    <li id='txtTemp'></li> <!-- includes actual tempertaure and feels like temperature-->
-                    <li id='txtWind'></li>
-                                        
-                </ul>
-                <img id='wibble' src="..."></img>
-              </article>
-
-          </section>
+              </section>
+            
           </div>
           
           <div class="col">
-            <section>
-              <h4>Second Location</h4>
-              <input placeholder="City" id='txtCity2' /><br />
-              <input placeholder="Country" id='txtCountry2' /><br />
+            <div class = "second_img">
+              <section>
+                <h4>Second Location</h4>
+                <input placeholder="City" id='txtCity2' /><br />
+                <input placeholder="Country" id='txtCountry2' /><br />
 
-              <hr/>
-              
+                <hr/>
 
-              <article class='invisible' id='weatherOutput2'>
+                <article class='invisible' id='weatherOutput2'>
 
-                <h4 id='where2'></h4>
-                <ul>
-                    <li id='txtDesc2'></li>
-                    <li id='txtTemp2'></li> <!-- includes actual tempertaure and feels like temperature-->
-                    <li id='txtWind2'></li>
-                    
-                </ul>
-                <img id='icon2' src="..."></img>
-              </article>
-            </section>
+                  <div class="jumbotron">
+
+                  <h4 id='where2'></h4>
+                  <ul>
+                      <li id='txtDesc2'></li>
+                      <li id='txtTemp2'></li>
+                      <li id='txtWind2'></li>
+                      
+                  </ul>
+                  <img id='icon2' src="..."></img> 
+                  </div>
+                </article>
+              </section>
+            
+            </div>
 
           </div>
 
