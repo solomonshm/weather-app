@@ -13,14 +13,22 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Outfit" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="css/template.css" rel="stylesheet">
   </head>
-  <style>
+  <style> 
     .invisible {display:none}
     .visible {display:block}
     #where {text-transform: capitalize}
+
+    .left {margin-left: 620pt; width:120pt;  position: absolute;top:190px; height: 144pt;}
+    .right{margin-left: 50pt; width:180pt; position:absolute;top:220px}
+
+    .MapPlacement{position:absolute;top:390px;right:240px}
+    .ComparePlacement{position:absolute;top:365px;left:190px}
+
+
   </style>
 
   <body>
@@ -47,21 +55,25 @@
     
     <main role="main" class="container">
   
-      
+      <!-- <div class='jumbotron'> -->
       <div class="starter-template">
+        <div class ='jumbotron'>
         <h1>Weather Report</h1>
         <p class="lead">Enter a location below</p>
         <input placeholder="City" id='txtCity'/> <br/>
         <input placeholder="Country" id='txtCountry'/> <br/>
         <button class="btn btn-secondary"  id=ResultsBtn onclick="gotoResults();">Go to results</button>
       </div>
+      </div>
    
 <!-- href="results.html" -->
     <!-- </main>/.container -->
 
 
-    <input type='image' name="globe" src="globe.gif" alt='map' onclick="location.href = 'map.html';">
-    <input type='image' name="comparison" src="comparison.png" alt='compare' onclick="location.href = 'compare.html';">
+    <input class='left' type='image' name="globe" src="globe.gif" alt='map' onclick="location.href = 'map.html';"> 
+    <span class='MapPlacement'>Map View &uarr;</span>
+    <input class='right' type='image' name="comparison" src="comparison.png" alt='compare' onclick="location.href = 'compare.html';">
+    <span class='ComparePlacement'>Compare two places &uarr;</span>
 
 
     <article class='invisible' id='WeatherResults'>
@@ -75,6 +87,22 @@
     
 
     <script>
+
+        let img1 = "https://www.rmweb.co.uk/community/uploads/monthly_03_2015/post-3717-0-28910200-1427235972.jpg"
+        let img2 = "https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
+        let img3 = "https://images.unsplash.com/photo-1541919329513-35f7af297129?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZHJpenpsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+        let img4 = "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFpbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+        let img5 = "https://images.unsplash.com/photo-1491002052546-bf38f186af56?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vd2luZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+        let img6 = "https://wallpaper.dog/large/20394727.jpg"
+        let img7 = "https://wallpaperaccess.com/full/3364029.jpg"
+        const BackgroundArray=[img1, img2, img3, img4, img5, img6, img7]
+        const RandomBackgroundImage = BackgroundArray[Math.floor(Math.random() * BackgroundArray.length)]
+        console.log(`${RandomBackgroundImage}`)
+
+        document.body.style.backgroundImage = `url(${RandomBackgroundImage})`
+
+
+
       function gotoResults(){
         let city = document.getElementById('txtCity').value
         let country = document.getElementById('txtCountry').value
@@ -83,6 +111,7 @@
                     window.location.href = temp;
 
       }
+
 
 
 
