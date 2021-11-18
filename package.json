@@ -1,6 +1,22 @@
 {
+  "name": "hairweather-app",
+  "version": "1.0.0",
+  "description": "This is the weather app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "Indigo Brownhall",
+  "license": "Informed",
   "dependencies": {
     "express": "^4.17.1",
-    "jquery": "^3.6.0"
+    "heroku": "^7.59.1"
+  },
+  "engines": {
+    "node": "14.17.0"
   }
 }
