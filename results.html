@@ -46,9 +46,8 @@
 
       <div class="starter-template">
       
-        <h1>Results page</h1>
 
-        <br><br>
+        <br><br><br><br>
 
         
           <div class="jumbotron shadow">
@@ -56,8 +55,28 @@
               <img id='icon' src="..."></img>
               <br>
               <h5 class="lead"><span id='temp'>##</span>&deg;C, feels like <span id='feelslike'>##</span>&deg;C.</h5>
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    High temp: <span id="hightemp">##</span>&deg;C
+                  </div>
+                  <div class="col-sm">
+                    <span id="description">##</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm">
+                    Low temp: <span id="lowtemp">##</span>&deg;C
+                  </div>
+                  <div class="col-sm">
+                    Wind speed: <span id="windspeed">##</span> km/h
+                  </div>
+                </div>
+              </div>
           
           </div>
+
+          <a class="btn btn-primary shadow" href="main.html" role="button">Back to search</a>
       
       </div>
       

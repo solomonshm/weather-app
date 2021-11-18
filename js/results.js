@@ -1,7 +1,7 @@
 function getImageUrl(weather) {
 
     if (weather == "Clouds") {
-        return "https://www.publicdomainpictures.net/pictures/290000/velka/clouds-background-1553569797k5s.jpg"
+        return "https://www.rmweb.co.uk/community/uploads/monthly_03_2015/post-3717-0-28910200-1427235972.jpg"
     } else if (weather == "Thunderstorm") {
         return "https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
     } else if (weather == "Drizzle") {
@@ -18,13 +18,23 @@ function getImageUrl(weather) {
 
 }
 
+function capitalize(input) {
+    return input.charAt(0).toUpperCase() + input.slice(1);
+}
+
 function loadPage(data) {
     document.getElementById('location').innerHTML = data.name
     document.getElementById('temp').innerHTML = `${(Math.round((data.main.temp - 273) * 10) / 10)}`
     document.getElementById('feelslike').innerHTML = `${(Math.round((data.main.feels_like - 273) * 10) / 10)}`
     document.getElementById('icon').src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+    document.getElementById('hightemp').innerHTML = `${(Math.round((data.main.temp_max - 273) * 10) / 10)}`
+    document.getElementById('lowtemp').innerHTML = `${(Math.round((data.main.temp_min - 273) * 10) / 10)}`
+    document.getElementById('windspeed').innerHTML = data.wind.speed
+    document.getElementById('description').innerHTML = capitalize(data.weather[0].description)
     document.body.style.backgroundImage = `url(${getImageUrl(data.weather[0].main)})`
 }
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // functions that happen on load
