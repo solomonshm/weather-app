@@ -49,6 +49,7 @@
         <h1>Compare Weather in Two Locations</h1>
         <p class="lead"></p>
         <button id='btnGo'>Compare</button>
+        <button id='btnGo2'>Compare</button>
 
       </div>
 
@@ -65,12 +66,14 @@
               <article class='invisible' id='weatherOutput'>
 
                 <h4 id='where'></h4>
+                
                 <ul>
                     <li id='txtDesc'></li>
                     <li id='txtTemp'></li> <!-- includes actual tempertaure and feels like temperature-->
                     <li id='txtWind'></li>
                                         
                 </ul>
+                <img id='wibble' src="..."></img>
               </article>
 
           </section>
@@ -94,6 +97,7 @@
                     <li id='txtWind2'></li>
                     
                 </ul>
+                <img id='icon2' src="..."></img>
               </article>
             </section>
 
@@ -114,8 +118,12 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <!-- <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script> -->
-    <script src="compare_script.js"></script>  
+    <script src="compare_2.js"></script>  
     <script src="retrieve_secondweather.js"></script>
+    
+    <script src="js/env.js"></script>
   </body>
+
+  
   
 </html>
