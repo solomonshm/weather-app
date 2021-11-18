@@ -14,9 +14,9 @@ function getImageUrl(weather) {
         return "https://wallpaperaccess.com/full/3364029.jpg"
     } else {
         return "https://wallpaper.dog/large/20394727.jpg"
-    } 
-
+    }
 }
+
 
 function capitalize(input) {
     return input.charAt(0).toUpperCase() + input.slice(1);
